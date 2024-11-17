@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajio-validation</title>
+    <style>
+       *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+       }
+       body{
+        width: 100%;
+        height: 50vh;
+        background-color: beige;
+       }
+       .regform{
+        float: left;
+        margin: 200px 150px;
+        display: none;
+
+        
+       }
+      #text,#password{
+        width: 230px;
+        height: 30px;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+      #password{
+        position: relative;
+        left: 10px;
+      }
+      #Register{
+        background-color: red;
+        color: black;
+        position: relative;
+        left: 160px;
+        width: 70px;
+        height: 40px;
+        border-radius: 5px;
+      }
+      .regform2{
+        float: left;
+        position: relative;
+        top: 200px;
+        left: 100px;
+
+        
+       }
+      #text1,#password1{
+        width: 230px;
+        height: 30px;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+      #password1{
+        position: relative;
+        left: 10px;
+      }
+      #Login{
+        background-color: red;
+        color: black;
+        position: relative;
+        left: 160px;
+        width: 70px;
+        height: 40px;
+        border-radius: 5px;
+      }
+      p{
+        font-size: 20px;
+      }
+      .reglog p{
+        position: relative;
+        top: 450px;
+        right: 200px;
+        
+      }
+      .reglog #newlogin{
+        display: none;
+        position: relative;
+        right: 400px;
+      }
+    </style>
+</head>
+<body>
+    <form action="">
+    <div class="regform">
+        <p>Registration:</p>
+        <label for="">User Name: </label><input id="text" type="text">
+        <br>
+        <label for="">Password: </label><input id="password" type="password">
+        <br>
+        <button id="Register">Register</button>
+    </div>
+   
+</form>
+<form action=""></form>
+    <div class="regform2">
+        <p>Login Details:</p>
+        <label for="">User Name: </label><input id="text1" type="text">
+        <br>
+        <label for="">Password: </label><input id="password1" type="password">
+        <br>
+        <button id="Login">Login</button>
+    </div>
+   
+</form>
+ <div class="reglog">
+  <p id="newreg">New Registration</p>
+  <p id="newlogin">Login Page</p>
+ </div>
+<script>
+    let Register=document.getElementById("Register");
+    Register.onclick=()=>{
+        let regtext=document.getElementById("text").value;
+        let regpass=document.getElementById("password").value;
+        if(regtext &&regpass){
+        localStorage.setItem("regtext",regtext);
+        localStorage.setItem("regpass",regpass);
+        alert("register successfull");
+        }
+        else{
+            alert("lets register your details");
+        }
+    }
+
+    let login=document.getElementById("Login");
+    login.onclick=()=>{
+        let regtext1=document.getElementById("text1").value;
+        let regpass1=document.getElementById("password1").value;
+        if(regpass1&& regtext1){
+        let curtext=localStorage.getItem("regtext");
+        let curpass=localStorage.getItem("regpass");
+        if(curtext===regtext1 && curpass===regpass1){
+            window.location.href='ajio.html';
+        }
+        else{
+            alert("Enter the correct details");
+        }
+    }
+    else{
+        alert("enter the login details");
+    }
+    } 
+
+    let regform=document.getElementsByClassName("regform");
+    let regform2=document.getElementsByClassName("regform2");
+    let newreg=document.getElementById("newreg");
+    let newlogin=document.getElementById("newlogin");
+    newreg.onclick=()=>{
+      
+      regform[0].style.display="inline";
+      regform2[0].style.display="none";
+      newreg.style.display="none";
+      newlogin.style.display="inline"
+    }
+    newlogin.onclick=()=>{
+      regform[0].style.display="none";
+      regform2[0].style.display="inline";
+      newreg.style.display="inline";
+      newlogin.style.display="none"
+
+    }
+
+    
+</script>
+    
+</body>
+</html>
